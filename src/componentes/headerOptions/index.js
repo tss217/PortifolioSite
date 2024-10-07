@@ -1,15 +1,30 @@
-import "./estilo.css";
 
+import styled from "styled-components";
 // Array with the header options
 const headerText = ['HOME', 'SOBRE', 'MINHA ESTANTE', 'FAVORITOS', 'CARRINHO'];
 
+const HeaderOptionsConteiner = styled.ul`
+  display:flex ;
+`
+const OptionsConteiner = styled.li`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 120px;
+`
+
 function HeaderOptions() {
   return (
-    <ul className='headerOptions'>
+    <HeaderOptionsConteiner>
       {headerText.map((text) => (
-        <li className='option' key={text}>{text}</li>
+        <OptionsConteiner className='option' key={text}>{text}</OptionsConteiner>
       ))}
-    </ul>
+    </HeaderOptionsConteiner>
   );
 }
 
