@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.header`
     display: flex;
-    background-color: #130124;
+    background-color: #000000;
     color: white;
 `
 
@@ -16,6 +16,7 @@ function Header(){
             <Logo />
             <HeaderOptions />
             <HeaderIcons />
+            
         </HeaderContainer>
  
     );
