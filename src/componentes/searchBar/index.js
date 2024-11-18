@@ -2,6 +2,8 @@
 import Input from '../input'
 import styled from "styled-components";
 import faceImg from './../../img/face.jpg';
+import { useState } from 'react';
+import { books } from './data';
 
 
 const DivSearch = styled.div`
@@ -37,14 +39,24 @@ const FaceImage = styled.img`
     object-fit: contain; /* Garante que a imagem não será distorcida */
 `;
 
-function searchBar() {
+function SearchBar() {
+    const[searchText, setSearchText] = useState([]);
+    console.log(searchText);
+
   return (
     <>
         <DivSearch>
             <ContainerSearch>
                 <Title>Portfólio </Title>
                 <SubTitle>Thiago.s.silva</SubTitle>
-                <Input placeholder="Escreve sua proxima leitura" />
+                <Input placeholder="Escreve sua proxima leitura" onBlur={events =>{
+                    const text = events.target.value;
+                    const resultFromSearch = books.filter(book => book.name.includes(text));
+                    setSearchText(resultFromSearch);
+                }} />
+                
+
+
             </ContainerSearch>
             <FaceImage src={faceImg} alt="Face" />
         </DivSearch>
@@ -55,4 +67,4 @@ function searchBar() {
   );
 }
 
-export default searchBar;
+export default SearchBar;
