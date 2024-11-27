@@ -38,6 +38,29 @@ const FaceImage = styled.img`
     margin-top: 0px; /* Ajuste o espaçamento conforme necessário */
     object-fit: contain; /* Garante que a imagem não será distorcida */
 `;
+const DivResult = styled.div`
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center;
+    margin-top: 90px; 
+    margin-left: 290px; /* Adiciona margem à esquerda */
+    overflow: hidden; 
+    img {
+        object-fit: cover;
+    }
+`;
+
+const DivBookTitle = styled.div`
+    text-align: left; /* Alinha o texto à esquerda */
+    max-width: 400px; /* Define a largura máxima da caixa */
+    margin: 0 20px 0 0; /* Adiciona margem à direita para espaçamento */
+    padding: 10px; /* Adiciona um pouco de preenchimento interno */
+    line-height: 1.5; /* Ajusta o espaçamento entre linhas */
+`;
+
+const DivBookImg = styled.div`
+    color: #FFF;
+`;
 
 function SearchBar() {
     const[searchText, setSearchText] = useState([]);
@@ -55,7 +78,18 @@ function SearchBar() {
                     setSearchText(resultFromSearch);
                 }} />
                 
-
+            {searchText.map(book => (
+                <DivResult>
+                    <DivBookTitle>
+                        <p><h1>{book.name}</h1></p>
+                        <p>{book.text}</p>
+                    </DivBookTitle>
+                    <DivBookImg>
+                        <img src={book.src} alt = {book.name}/>
+                    </DivBookImg>
+                    
+                </DivResult>
+            ))}
 
             </ContainerSearch>
             <FaceImage src={faceImg} alt="Face" />
